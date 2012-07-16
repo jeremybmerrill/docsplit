@@ -13,8 +13,8 @@ module Docsplit
           doc        
         else 
           #this test is nested because it's relatively expensive, no need to do it for files with pdf extensions
-          filetypeHeader = File.open(doc, 'r') { |f| f.read(8)}
-          is_pdf = (filetypeHeader =~ /\%PDF-\d\.\d/) == 0 
+          filetypeHeader = File.open(doc, 'r') { |f| f.read(4)}
+          is_pdf = (filetypeHeader =~ /\%PDF/) == 0 
           #via http://stackoverflow.com/questions/7919674/how-to-verify-downloaded-file-format
           if is_pdf
             doc
